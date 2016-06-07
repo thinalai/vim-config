@@ -8,11 +8,8 @@ Plug 'kien/ctrlp.vim'
 
 Plug 'altercation/vim-colors-solarized'
 
-" Auto complete
-Plug 'Valloric/YouCompleteMe'
-
-" Go develop
-Plug 'fatih/vim-go'
+" Dockerfile
+Plug 'ekalinin/Dockerfile.vim'
 
 " Make sure you use single quotes
 
