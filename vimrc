@@ -1,7 +1,13 @@
 call plug#begin('~/.vim/plugged')
 
+" color theme
+Plug 'shaond/vim-guru'
+Plug 'jacoborus/tender'
+
 " Use C-x + C-n to complete hint
 Plug 'valloric/youcompleteme'
+
+Plug 'hynek/vim-python-pep8-indent'
 
 Plug 'tpope/vim-surround'
 
@@ -162,7 +168,8 @@ map <C-M-space> :bp <CR>
 
 " I bet 90% of vim users have the following two lines in their .vimrc...
 set background=dark
-colorscheme solarized
+"colorscheme evening
+colorscheme gurunew
 
 " Don't create swapfiles
 set noswapfile
@@ -207,3 +214,13 @@ let g:ycm_warning_symbol = '>*'
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" tabNext tabPrevios
+nnoremap <leader>tN :tabnew 
+nnoremap <leader>tn :tabNext<CR>
+nnoremap <leader>tp :tabprevious<CR>
+
+
+" line 80
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
