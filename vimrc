@@ -1,5 +1,33 @@
 call plug#begin('~/.vim/plugged')
 
+" Todo.txt
+" Sorting tasks:
+" <localleader>s Sort the file
+" <localleader>s+ Sort the file on +Projects
+" <localleader>s@ Sort the file on @Contexts
+" <localleader>sd Sort the file on dates
+" <localleader>sdd Sort the file on due dates
+"
+" Edit priority:
+" <localleader>j Decrease the priority of the current line
+" <localleader>k Increase the priority of the current line
+" <localleader>a Add the priority (A) to the current line
+" <localleader>b Add the priority (B) to the current line
+" <localleader>c Add the priority (C) to the current line
+"
+" Date:
+" <localleader>d Set current task's creation date to the current date
+" date<tab> (Insert mode) Insert the current date
+"
+" Mark as done:
+" <localleader>x Mark current task as done
+" <localleader>X Mark all tasks as done
+" <localleader>D Move completed tasks to done.txt
+"
+" This plugin detects any text file with the name todo.txt or done.txt with an optional prefix that ends in a period
+" (e.g. second.todo.txt, example.done.txt).
+Plug 'freitass/todo.txt-vim'
+
 " color theme
 Plug 'shaond/vim-guru'
 Plug 'jacoborus/tender'
@@ -56,6 +84,7 @@ call plug#end()
 " Shortcuts
 " ==========================================================
 let mapleader=","             " change the leader to be a comma vs slash
+let maplocalleader="."
 
 " sudo write this
 cmap W! w !sudo tee % >/dev/null
@@ -213,14 +242,18 @@ let g:ycm_error_symbol = '>>'
 let g:ycm_warning_symbol = '>*'
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " tabNext tabPrevios
 nnoremap <leader>tN :tabnew 
-nnoremap <leader>tn :tabNext<CR>
+nnoremap <leader>tn :tabnext<CR>
 nnoremap <leader>tp :tabprevious<CR>
 
 
 " line 80
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
+
+" todo-vim
+nnoremap <leader>to :10split ~/todo.txt<CR>
